@@ -1,4 +1,3 @@
-import DataAccess.DataAccess
 import foo.macros._
 import org.specs2.mutable._
 import org.specs2.runner._
@@ -18,7 +17,7 @@ class ApplicationSpec extends Specification {
   "Application" should {
 
     "send 404 on a bad request" in new WithApplication{
-      route(FakeRequest(GET, "/boum")) must beNone
+      route(FakeRequest(GET, "/bad")) must beNone
     }
 
     "render the index page" in new WithApplication{
@@ -28,16 +27,6 @@ class ApplicationSpec extends Specification {
       contentType(home) must beSome.which(_ == "text/html")
       contentAsString(home) must contain ("Your new application is ready.")
     }
-  }
-}
-
-import scala.language.experimental.macros
-
-class Foobar extends Specification{
-  "test" in {
-    val access = new DataAccess()
-
-    access.get mustNotEqual(null)
   }
 }
 

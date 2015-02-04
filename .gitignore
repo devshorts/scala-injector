@@ -1,5 +1,7 @@
 logs
 project/project
+bin/
+*.class
 project/target
 target
 tmp
